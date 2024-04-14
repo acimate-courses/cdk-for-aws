@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-//import { InfraStack } from '../lib/s3/infra-stack';
-//import { InfraS3MultipleStack } from '../lib/multiple-s3/infra-stack-multiple-s3';
-//import { AcimateInfraLambda } from '../lib/lambda/infra-stack-lambda';
+//import { InfraStack } from '../lib/01-s3/infra-stack';
+//import { InfraS3MultipleStack } from '../lib/02-multiple-s3/infra-stack-multiple-s3';
+//import { AcimateInfraLambda } from '../lib/03-lambda/infra-stack-lambda';
 import { AcimateInfraS3TriggerLambda } from '../lib/04-s3-trigger-lambda/infra-stack-s3-trigger-lambda';
 
 const app = new cdk.App();
