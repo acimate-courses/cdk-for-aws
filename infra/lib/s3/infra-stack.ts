@@ -7,11 +7,6 @@ export class InfraStack extends cdk.Stack {
     super(scope, id, props);
 
     // The code that defines your stack goes here
-
-    // example resource
-    // const queue = new sqs.Queue(this, 'InfraQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
     const intelligentTieringConfigurations: s3.IntelligentTieringConfiguration={
       name:'s3_tier',
       archiveAccessTierTime: cdk.Duration.days(90),
@@ -26,9 +21,11 @@ export class InfraStack extends cdk.Stack {
     versioned: true,
     intelligentTieringConfigurations : [intelligentTieringConfigurations],
     objectOwnership: s3.ObjectOwnership.BUCKET_OWNER_ENFORCED,
-    publicReadAccess:false
+    publicReadAccess:false,
+    removalPolicy:cdk.RemovalPolicy.DESTROY
    }); 
-
+   
+   //Create buckets
    const bucket = new s3.Bucket(this,'InfraBucket',{
     bucketName :'acimate-test-bucket-999',
     blockPublicAccess : s3.BlockPublicAccess.BLOCK_ALL,
@@ -38,7 +35,8 @@ export class InfraStack extends cdk.Stack {
     intelligentTieringConfigurations : [intelligentTieringConfigurations],
     objectOwnership: s3.ObjectOwnership.BUCKET_OWNER_ENFORCED,
     publicReadAccess:false,
-    serverAccessLogsBucket:access_bucket
-   });
+    serverAccessLogsBucket:access_bucket,
+    removalPolicy:cdk.RemovalPolicy.DESTROY
+   });   
   }
 }
