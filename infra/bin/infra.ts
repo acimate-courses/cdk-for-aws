@@ -4,10 +4,11 @@ import * as cdk from 'aws-cdk-lib';
 //import { InfraStack } from '../lib/01-s3/infra-stack';
 //import { InfraS3MultipleStack } from '../lib/02-multiple-s3/infra-stack-multiple-s3';
 //import { AcimateInfraLambda } from '../lib/03-lambda/infra-stack-lambda';
-import { AcimateInfraS3TriggerLambda } from '../lib/04-s3-trigger-lambda/infra-stack-s3-trigger-lambda';
+//import { AcimateInfraS3TriggerLambda } from '../lib/04-s3-trigger-lambda/infra-stack-s3-trigger-lambda';
+import { AcimateInfraS3TriggerSns } from '../lib/05-s3-trigger-sns/infra-stack-s3-trigger-sns';
 
 const app = new cdk.App();
-new AcimateInfraS3TriggerLambda(app, 'AcimateInfraS3TriggerLambda', {
+new AcimateInfraS3TriggerSns(app, 'AcimateInfraS3TriggerSns', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */

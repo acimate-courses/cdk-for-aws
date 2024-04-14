@@ -26,7 +26,7 @@ export class AcimateInfraS3TriggerSns extends cdk.Stack {
         actions:['sns:Publish'],
         resources:[topic.topicArn],
         conditions:{'ArnLike': {"aws:SourceArn": "arn:aws:s3:*:*:" + "acimate-test-bucket-999"},
-        'StringEquals': {"aws:SourceAccount": "707690426194"}}
+        'StringEquals': {"aws:SourceAccount": "111111111111"}}
     }))
 
     // The code that defines your stack goes here
