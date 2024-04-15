@@ -28,7 +28,7 @@ export class AcimateInfraEventTriggerLambda extends cdk.Stack {
         resources:["arn:aws:logs:*:*:*"]
     }),
     );
-    
+
     const fn = new lambda.Function(this,'Acimate-Test-Lambda',{
         runtime: lambda.Runtime.PYTHON_3_12,
         handler: 'testlambda.handler',
@@ -39,7 +39,8 @@ export class AcimateInfraEventTriggerLambda extends cdk.Stack {
     });
 
     const rule = new events.Rule(this,'event-schedule-rule',{
-        schedule: events.Schedule.rate(cdk.Duration.minutes(5))
+        schedule: events.Schedule.rate(cdk.Duration.minutes(5)),
+        ruleName :'event-test-rule'
     });
     
     rule.addTarget(new eventtargets.LambdaFunction(fn,{        
